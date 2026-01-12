@@ -9,8 +9,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{data.name}
-
 <main class="layout-readable center">
+	{#if data.name}{data.name}{/if}
 	{@render children()}
 </main>

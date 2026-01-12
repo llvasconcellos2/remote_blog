@@ -21,8 +21,16 @@ import { auth } from '$lib/auth';
 
 // export const handle = sequence(log, log_two);
 
-export const authHandle: Handle = async ({ event, resolve }) => {
+const authHandle: Handle = async ({ event, resolve }) => {
 	return svelteKitHandler({ event, resolve, auth, building });
 };
 
-export const handle = sequence(authHandle);
+const sessionHandle: Handle = async ({ event, resolve }) => {
+	const session = await auth.api.getSession({
+		headers: event.request.headers
+	});
+	event.locals.user = session?.user;
+	return await resolve(event);
+};
+
+export const handle = sequence(authHandle, sessionHandle);
