@@ -41,6 +41,8 @@
 		"vite-plugin-devtools-json": "^1.0.0"
 	},
 	"dependencies": {
+		"@drop-in/graffiti": "^4.12.2",
+		"better-auth": "^1.4.11",
 		"postgres": "^3.4.7"
 	}
 }
