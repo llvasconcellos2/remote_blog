@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@drop-in/graffiti": "^4.12.2",
 		"better-auth": "^1.4.11",
-		"postgres": "^3.4.7"
+		"postgres": "^3.4.7",
+		"valibot": "^1.2.0"
 	}
 }
