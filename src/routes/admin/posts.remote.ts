@@ -24,7 +24,7 @@ export const createPost = form(
 		const session = await auth.api.getSession({
 			headers: event.request.headers
 		});
-		if (!session?.user.id) {
+		if (!session?.user.id || session.user.role !== 'admin') {
 			error(401, 'Unauthorized.');
 		}
 		const slug = title.toLowerCase().replace(/ /g, '-');
@@ -44,7 +44,7 @@ export const updatePost = form(
 		const session = await auth.api.getSession({
 			headers: event.request.headers
 		});
-		if (!session?.user.id) {
+		if (!session?.user.id || session.user.role !== 'admin') {
 			error(401, 'Unauthorized.');
 		}
 		const slug = title.toLowerCase().replace(/ /g, '-');
@@ -54,4 +54,10 @@ export const updatePost = form(
 			.where(eq(post.id, id));
 		redirect(303, '/admin');
 	}
+);
+
+export const getPostBySlug = query(v.string(), async (slug) =>
+	db.query.post.findFirst({
+		where: (post, { eq }) => eq(post.slug, slug)
+	})
 );

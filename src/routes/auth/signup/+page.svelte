@@ -76,3 +76,5 @@
 		<button type="submit">Sign Up</button>
 	</form>
 </div>
+
+<p>Already have an account? <a href={resolve('/auth/login')}>Sign In</a></p>

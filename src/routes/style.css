@@ -1,0 +1,21 @@
+:root {
+	/* Blends the foreground color with transparency or white to "tint" it */
+	--tint-or-shade: color-mix(in oklab, var(--fg), transparent 70%);
+}
+
+label {
+	display: block;
+}
+
+a {
+	color: var(--white);
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.button,
+button {
+	display: inline-block;
+}
