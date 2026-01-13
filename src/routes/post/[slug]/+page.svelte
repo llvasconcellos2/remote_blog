@@ -7,7 +7,7 @@
 
 {#if post}
 	<section>
-		<h1>{post.title}</h1>
+		<h2 style:view-transition-name={`heading-${post.slug}`}>{post.title}</h2>
 		<p>{post.body}</p>
 	</section>
 {/if}
